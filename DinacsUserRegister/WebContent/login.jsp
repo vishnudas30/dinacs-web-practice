@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/dinacs.css">
-
+<script src="js/dinacs.js"></script>
 </head>
 <body bgcolor="red">
 <div align="center">
@@ -20,32 +20,7 @@ Password: <input type ="password" name = "pass">  <br><br>
 
 </div>
 </body>
-<script type="text/javascript">
 
-function userValidate(){
-	alert("hi");
-	var userName = document.getElementsByName("Uname").value();
-	var passWord = document.getElementsByName("pass").value();
-	
-	alert(userName);
-	alert(passWord);
-
-	
-	if(userName==null || userName==" "){
-		alert("Please enter the userName");
-		//alert("Please enter the passWord");
-			
-	}
-	
-	if(passWord==null || passWord==" "){
-		alert("Please enter the passWord");
-			
-	}
-	
-	
-}
-
-</script>
 
 
 </html>
