@@ -12,8 +12,8 @@
 <body bgcolor="red">
 <div align="center">
 <form action="welcome.jsp" method="post">
-User Name: <input type="text" name="Uname">   <br><br>
-Password: <input type ="password" name = "pass">  <br><br>
+User Name: <input id="Uname" type="text" name="Uname">   <br><br>
+Password: <input id="pass" type ="password" name = "pass">  <br><br>
    <input type="submit" value="Login" onclick="userValidate()" class="dinacs-button">
    
 </form>
