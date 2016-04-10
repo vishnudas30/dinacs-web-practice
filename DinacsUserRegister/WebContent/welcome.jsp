@@ -19,6 +19,13 @@ out.println("</b>");
 
 
 %>
+<img src="${pageContext.request.contextPath}/img/hbd2.jpg"/><br><br>
+
+<p><b>Many Many Happy returns of the Day ....My Sweetu...Love You So much My Janu!!!</</b></p><br>
+
+<video controls preload="auto" src="./happybirth_7IUeSa4L.mp4" width="1200" height="400"></video> 
+
+
 </div>
 </body>
 </html>

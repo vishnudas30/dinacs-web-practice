@@ -11,10 +11,10 @@
 </head>
 <body bgcolor="red">
 <div align="center">
-<form action="welcome.jsp" method="post">
+<form action="welcome.jsp" method="post" onsubmit="return userValidate();">
 User Name: <input id="Uname" type="text" name="Uname">   <br><br>
 Password: <input id="pass" type ="password" name = "pass">  <br><br>
-   <input type="submit" value="Login" onclick="userValidate()" class="dinacs-button">
+   <input type="submit" value="Login" class="dinacs-button">
    
 </form>
 
