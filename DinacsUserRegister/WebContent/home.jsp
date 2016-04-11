@@ -4,12 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<div class="w3-container w3-red">
+  <h1>Dinacs Bank</h1>
+</div>
 </head>
 <body bgcolor="red">
 <div align="center">
 <h1>Welcome to Dinacs Bank </h1>
 <a href="login.jsp">Please click here to Login!!!</a>
+
 </div>
 </body>
 </html>

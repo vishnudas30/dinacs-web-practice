@@ -5,7 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<div class="w3-container w3-red">
+  <h1>Dinacs Bank</h1>
+</div>
+<title>Private Bank</title>
+<link rel ="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" type="text/css" href="css/dinacs.css">
 <script src="js/dinacs.js"></script>
 </head>
@@ -21,6 +25,8 @@ Password: <input id="pass" type ="password" name = "pass">  <br><br>
 </div>
 </body>
 
-
+<div id="footer">
+Copyright ©2016 dinacs.com,india|Disclaimer|Private Policy
+</div>
 
 </html>
