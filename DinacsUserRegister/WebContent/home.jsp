@@ -10,6 +10,12 @@
 <div align="center">
 <h1>Welcome to Dinacs Bank </h1>
 <a href="login.jsp">Please click here to Login!!!</a>
+<%session.setAttribute("name","lisa");
+session.setAttribute("pass", "rani");
+
+
+
+%>
 
 </div>
 <jsp:include page="footer.jsp"></jsp:include>

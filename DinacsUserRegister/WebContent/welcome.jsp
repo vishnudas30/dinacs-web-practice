@@ -13,10 +13,22 @@
 <%
 
  String userName = request.getParameter("Uname");
+String userPass = request.getParameter("pass");
 out.println("<b>");
+String name =(String)session.getAttribute("name");
+String pass =(String)session.getAttribute("pass");
 
-out.println("</n><b>WelCome</b> "+ userName);
-out.println("</b>");
+if(userName.equals(name) && userPass.equals(pass)){
+	out.println("</n><b>WelCome</b> "+ userName);
+	out.println("</b>");	
+}
+else{
+	
+	out.println("You Have enter Invalid credentials");
+}
+	
+
+
 
 
 %>
