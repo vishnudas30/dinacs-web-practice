@@ -9,3 +9,13 @@ background-color: rebeccapurple; /* Blue */
     display: inline-block;
     font-size: 16px;
 }
+#footer {
+  position: relative;
+  margin-bottom: -180px; /* negative value of footer height */
+  height: 180px;
+  clear:both;
+} 
+.logo{
+	text-indent:-999999px;
+	background:url('logo.jpg');
+}

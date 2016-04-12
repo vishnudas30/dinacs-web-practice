@@ -5,22 +5,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+
+<title>Private Bank</title>
 <link rel="stylesheet" type="text/css" href="css/dinacs.css">
 <script src="js/dinacs.js"></script>
 </head>
 <body bgcolor="red">
+<jsp:include page="header.jsp"></jsp:include>
 <div align="center">
-<form action="welcome.jsp" method="post">
+<form action="welcome.jsp" method="post" onsubmit="return userValidate();">
 User Name: <input id="Uname" type="text" name="Uname">   <br><br>
 Password: <input id="pass" type ="password" name = "pass">  <br><br>
-   <input type="submit" value="Login" onclick="userValidate()" class="dinacs-button">
+   <input type="submit" value="Login" class="dinacs-button">
    
 </form>
 
 </div>
-</body>
+<jsp:include page="footer.jsp"></jsp:include>
 
+</body>
 
 
 </html>

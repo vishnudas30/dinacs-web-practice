@@ -4,12 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
 </head>
 <body bgcolor="red">
+<jsp:include page="header.jsp"></jsp:include>
 <div align="center">
 <h1>Welcome to Dinacs Bank </h1>
 <a href="login.jsp">Please click here to Login!!!</a>
+
 </div>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
