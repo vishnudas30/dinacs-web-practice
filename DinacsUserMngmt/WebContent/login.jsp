@@ -13,7 +13,15 @@
 <body bgcolor="red">
 <jsp:include page="header.jsp"></jsp:include>
 <div align="center">
-<form action="welcome.jsp" method="post" onsubmit="return userValidate();">
+<%String erMsg = (String) request.getAttribute("errormsg");
+out.print("<h1>"+erMsg+"</h1>");
+session.setAttribute("action", "login");
+
+%>
+
+<br>
+<form action="usermngmt" method="post" onsubmit="return userValidate();">
+
 User Name: <input id="Uname" type="text" name="Uname">   <br><br>
 Password: <input id="pass" type ="password" name = "pass">  <br><br>
    <input type="submit" value="Login" class="dinacs-button">
