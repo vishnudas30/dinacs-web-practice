@@ -4,20 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body bgcolor="red">
 <jsp:include page="header.jsp"></jsp:include>
 <div align="center">
-<h1>Welcome to Dinacs Bank </h1>
-<a href="login.jsp">Please click here to Login!!!</a>
-<%session.setAttribute("name","lisa");
-session.setAttribute("pass", "rani");
+<img src="${pageContext.request.contextPath}/img/logo.jpg"/><br><br>
 
-
+<p><b>This is a private Bank of Limited!!!</</b></p><br>
+<%
+out.print("Welcome" + request.getAttribute("userMngmt"));
 
 %>
+<video controls preload="auto" src="./happybirth_7IUeSa4L.mp4" width="1200" height="400"></video> 
+
 
 </div>
-<jsp:include page="footer.jsp"></jsp:include>
 </body>
+<jsp:include page="footer.jsp"></jsp:include>
+
 </html>
