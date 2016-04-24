@@ -1,3 +1,5 @@
+<%@page import="com.dinacs.usermngmt.model.UserModel"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%List<UserModel> usrListvalue = (List)request.getAttribute("listofUser");
+%>
 <table border="1" bgcolor="yellow" cellpadding="30">
 <thead>
 <tr>
@@ -29,18 +32,19 @@ User email:
 </tr>
 
 </thead>
-<tr>
-<td>1</td>
-<td>Ram</td>
-<td>rout</td>
-<td>ramrout</td>
-<td>ram123@gmail.com</td>
+<%
 
-
-
-
-</tr>
-
+for(UserModel user : usrListvalue){%>
+	
+	<tr>
+	<td><%= user.getId()%></td>
+	
+	<td><%= user.getFname()%></td>
+	
+	<td><%= user.getLname()%></td>
+	<td><%= user.getUname()%></td> 
+	<td><%= user.getEmail()%></td> 
+	</tr><%} %>	
 </table>
 
 </body>
