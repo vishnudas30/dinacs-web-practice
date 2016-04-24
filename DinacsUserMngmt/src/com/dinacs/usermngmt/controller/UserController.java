@@ -1,6 +1,8 @@
 package com.dinacs.usermngmt.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,59 +18,46 @@ import com.dinacs.usermngmt.model.UserModel;
  *
  */
 public class UserController extends HttpServlet {
+	List<UserModel> userList = new ArrayList<UserModel>();
 
-	
-	// unuse method
-	/*@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		userLogin(request, response);
-
-		System.out.println("doGet is Called");
-	}
-*/
-	
-	
-	
-	
-	
-	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		
 		System.out.println("doPost is Called");
 		HttpSession session = request.getSession();
 
 		String action = (String) session.getAttribute("action");
-		System.out.println("action is"+action );
-	
-		if("login".equalsIgnoreCase(action)){
+		System.out.println("action is" + action);
+		
+		String userId = request.getParameter("id");
+		System.out.println("user Id is  in do post method is:" + userId);
+
+		if ("login".equalsIgnoreCase(action)) {
 			System.out.println("calling login method");
 
-		String redirectPage =userLogin(request, response);
-		request.setAttribute("errormsg", "Invalid credentilas");
-		RequestDispatcher rd = request.getRequestDispatcher("/"+redirectPage);
-		rd.forward(request, response);
+			String redirectPage = userLogin(request, response);
+			request.setAttribute("errormsg", "Invalid credentilas");
+			RequestDispatcher rd = request.getRequestDispatcher("/" + redirectPage);
+			rd.forward(request, response);
 
 		}
-		
-		if("register".equalsIgnoreCase(action)){ 
+
+		if ("register".equalsIgnoreCase(action)) {
 			System.out.println("calling register method");
 
-		registerUser(request);
-		RequestDispatcher rd = request.getRequestDispatcher("/welcome.jsp");
-		rd.forward(request, response);
+			List<UserModel> userList =registerUser(request);
+			request.setAttribute("listofUser",userList );
+			RequestDispatcher rd = request.getRequestDispatcher("/userlist.jsp");
+			rd.forward(request, response);
 
 		}
-		}
+	}
 
 	/**
 	 * @param request
 	 */
-	public void registerUser(HttpServletRequest request) {
+	public List<UserModel> registerUser(HttpServletRequest request) {
 		String userId = request.getParameter("id");
 		System.out.println("user Id is :" + userId);
 
@@ -107,9 +96,8 @@ public class UserController extends HttpServlet {
 
 		String userPhoneNo = request.getParameter("phoneno");
 		System.out.println("user phone number is :" + userPhoneNo);
-
-		
 		UserModel usrMdlObj = new UserModel();
+
 		
 		usrMdlObj.setId(userId);
 		usrMdlObj.setFname(userFname);
@@ -124,26 +112,24 @@ public class UserController extends HttpServlet {
 		usrMdlObj.setPhoneno(userPhoneNo);
 		usrMdlObj.setQualification(userQlyfcation);
 		usrMdlObj.setFile(userPhoto);
+		userList.add(usrMdlObj);
+
+		return userList;
+		
 	}
-
-
-
-
-
-
 
 	/**
 	 * @param request
 	 * @param response
-	 * @return 
+	 * @return
 	 * @throws ServletException
 	 * @throws IOException
 	 */
 	public String userLogin(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String redirectPage = null; 
-		
+
+		String redirectPage = null;
+
 		HttpSession session = request.getSession();
 
 		String userName = request.getParameter("Uname");
@@ -153,10 +139,10 @@ public class UserController extends HttpServlet {
 		System.out.println("user name is :" + userName);
 		System.out.println("password is :" + userPass);
 		if (userName.equals(name) && userPass.equals(pass)) {
-			redirectPage="welcome.jsp";
+			redirectPage = "welcome.jsp";
 
 		} else {
-			redirectPage="login.jsp";
+			redirectPage = "login.jsp";
 
 		}
 		return redirectPage;

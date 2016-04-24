@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,19 +7,23 @@
 <title>Insert title here</title>
 </head>
 <body bgcolor="red">
-<jsp:include page="header.jsp"></jsp:include>
-<div align="center">
-<img src="${pageContext.request.contextPath}/img/logo.jpg"/><br><br>
+	<jsp:include page="header.jsp"></jsp:include>
+	<div align="center">
+		<img src="${pageContext.request.contextPath}/img/logo.jpg" /><br>
+		<br>
 
-<p><b>This is a private Bank of Limited!!!</</b></p><br>
-<%
-out.print("Welcome" + request.getAttribute("userMngmt"));
-
-%>
-<video controls preload="auto" src="./happybirth_7IUeSa4L.mp4" width="1200" height="400"></video> 
-
-
-</div>
+		<p>
+			<b>This is a private Bank of Limited!!!</</b>
+		</p>
+		<br>
+		<%
+			out.print("Welcome" + request.getAttribute("userMngmt"));
+		%>
+		<a href="userlist.jsp">See List of Register user</a><br>
+		<br>
+		<video controls preload="auto" src="./happybirth_7IUeSa4L.mp4"
+			width="1200" height="400"></video>
+	</div>
 </body>
 <jsp:include page="footer.jsp"></jsp:include>
 
