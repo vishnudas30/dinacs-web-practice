@@ -18,6 +18,15 @@ public class UserService {
 		UserDAO dao = new UserDAO();
 		return dao.getUsers();
 	}
+
+
+
+	public void deleteUser(String id) {
+		System.out.println("deleting user");
+
+		UserDAO dao = new UserDAO();
+		dao.deleteUser(id);
+	}
 	
 	
 }

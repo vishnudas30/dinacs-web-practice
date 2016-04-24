@@ -26,6 +26,49 @@ import com.mysql.jdbc.Connection;
  */
 public class UserController extends HttpServlet {
 	List<UserModel> userList = new ArrayList<UserModel>();
+	
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	String action = request.getParameter("action");
+	
+	System.out.println("action is"+action);
+	if ("listusers".equalsIgnoreCase(action)) {
+		
+		System.out.println("calling doGet method");
+
+		UserService userServiceObj = new UserService();
+		userList = userServiceObj.getUsers();
+		request.setAttribute("listofUser",userList );
+		RequestDispatcher rd = request.getRequestDispatcher("/userlist.jsp");
+		rd.forward(request, response);
+	}
+	
+if ("delete".equalsIgnoreCase(action)) {
+		
+		System.out.println("calling doGet method");
+
+		UserService userServiceObj = new UserService();
+		          String Id = request.getParameter("id");
+		      	System.out.println("deleting user");
+
+		          userServiceObj.deleteUser(Id);
+		          
+		          
+		          
+		          
+		          
+		          
+		  		userList = userServiceObj.getUsers();
+
+		request.setAttribute("listofUser",userList );
+		RequestDispatcher rd = request.getRequestDispatcher("/userlist.jsp");
+		rd.forward(request, response);
+	}
+	
+	
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -41,6 +84,7 @@ public class UserController extends HttpServlet {
 		System.out.println("user Id is  in do post method is:" + userId);
 
 		if ("login".equalsIgnoreCase(action)) {
+			
 			System.out.println("calling login method");
 
 			String redirectPage = userLogin(request, response);

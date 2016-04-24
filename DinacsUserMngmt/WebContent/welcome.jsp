@@ -19,7 +19,7 @@
 		<%
 			out.print("Welcome" + request.getAttribute("userMngmt"));
 		%>
-		<a href="userlist.jsp">See List of Register user</a><br>
+		<a href="usermngmt?action=listusers">See List of Register user</a><br>
 		<br>
 		<video controls preload="auto" src="./happybirth_7IUeSa4L.mp4"
 			width="1200" height="400"></video>

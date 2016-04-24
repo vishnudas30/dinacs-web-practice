@@ -2,6 +2,7 @@ package com.dinacs.usermngmt.dao;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,5 +98,25 @@ public List<UserModel> getUsers() {
 
 
 	return userList;
+}
+
+public void deleteUser(String id) {
+	
+	System.out.println("deleting user");
+	try {
+		Class.forName(driver);
+		Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/dinacsdb", "root", "root");
+
+	    Statement st = con.createStatement();
+	    String sql = "DELETE FROM USER where userId="+id+"";
+	   st.executeUpdate(sql);
+	  
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	
+	
 }
 }
