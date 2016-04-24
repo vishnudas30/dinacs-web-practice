@@ -1,6 +1,8 @@
 package com.dinacs.usermngmt.controller;
 
 import java.io.IOException;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.realm.UserDatabaseRealm;
+
+import com.dinacs.usermngmt.dao.UserDAO;
 import com.dinacs.usermngmt.model.UserModel;
+import com.dinacs.usermngmt.service.UserService;
+import com.mysql.jdbc.Connection;
 
 /**
  * @author Lisa
@@ -112,8 +119,16 @@ public class UserController extends HttpServlet {
 		usrMdlObj.setPhoneno(userPhoneNo);
 		usrMdlObj.setQualification(userQlyfcation);
 		usrMdlObj.setFile(userPhoto);
-		userList.add(usrMdlObj);
+		
+		
 
+		UserService userServiceObj = new UserService();
+		userServiceObj.userRegisterService(usrMdlObj);
+		
+		userList=userServiceObj.getUsers();
+		
+		
+		
 		return userList;
 		
 	}
