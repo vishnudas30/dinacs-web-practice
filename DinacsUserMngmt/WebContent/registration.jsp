@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration Page</title>
+<script src="js/dinacs.js"></script>
 </head>
 <body>
 	<div style="background-color: cyan">
@@ -14,7 +15,7 @@
 		<%
 			session.setAttribute("action", "register");
 		%>
-		<form action="usermngmt" method="post">
+		<form action="usermngmt" method="post" onsubmit="return validateRegistrationForm()">
 
 			<center>
 				<table border="1" width="30%" cellpadding="5">
@@ -28,11 +29,11 @@
 
 						<tr>
 							<td>Login Id:</td>
-							<td><input type="text" type="text" name="id" placeholder="please enter your id" required="true"  ></td>
+							<td><input type="text" type="text" name="id" placeholder="please enter your id" required="true"  maxlength="4"></td>
 						</tr>
 						
 						<tr>
-							<td>First Name: </td><td><input id="FName" type="text" name="Fname" placeholder="please enter your firstname" required="true"><br>
+							<td>First Name: </td><td><input id="FName" type="text" name="Fname" placeholder="please enter your firstname" required="true" ><br>
 							<br></td>
 						</tr>
 

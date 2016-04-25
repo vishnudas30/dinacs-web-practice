@@ -18,3 +18,29 @@ function userValidate() {
 	}
 
 }
+
+
+
+
+function  validateRegistrationForm(){
+	
+	
+ var fName =	document.getElementById("FName").value;
+	
+ if (fName == null || fName == "") {
+		alert("Please enter the userName");
+		return false;
+	}
+ else{
+	 
+	 if(fName.length < 4){
+			alert("Please enter atleast 4 character");
+			return false;
+ 
+	 }
+ }
+
+ 
+ 
+	
+}

@@ -26,48 +26,42 @@ import com.mysql.jdbc.Connection;
  */
 public class UserController extends HttpServlet {
 	List<UserModel> userList = new ArrayList<UserModel>();
-	
-	
+
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	String action = request.getParameter("action");
-	
-	System.out.println("action is"+action);
-	if ("listusers".equalsIgnoreCase(action)) {
-		
-		System.out.println("calling doGet method");
+		String action = request.getParameter("action");
 
-		UserService userServiceObj = new UserService();
-		userList = userServiceObj.getUsers();
-		request.setAttribute("listofUser",userList );
-		RequestDispatcher rd = request.getRequestDispatcher("/userlist.jsp");
-		rd.forward(request, response);
-	}
-	
-if ("delete".equalsIgnoreCase(action)) {
-		
-		System.out.println("calling doGet method");
+		System.out.println("action is" + action);
+		if ("listusers".equalsIgnoreCase(action)) {
 
-		UserService userServiceObj = new UserService();
-		          String Id = request.getParameter("id");
-		      	System.out.println("deleting user");
+			System.out.println("calling doGet method");
 
-		          userServiceObj.deleteUser(Id);
-		          
-		          
-		          
-		          
-		          
-		          
-		  		userList = userServiceObj.getUsers();
+			UserService userServiceObj = new UserService();
+			userList = userServiceObj.getUsers();
+			request.setAttribute("listofUser", userList);
+			RequestDispatcher rd = request.getRequestDispatcher("/userlist.jsp");
+			rd.forward(request, response);
+		}
 
-		request.setAttribute("listofUser",userList );
-		RequestDispatcher rd = request.getRequestDispatcher("/userlist.jsp");
-		rd.forward(request, response);
-	}
-	
-	
+		if ("delete".equalsIgnoreCase(action)) {
+
+			System.out.println("calling doGet method");
+
+			UserService userServiceObj = new UserService();
+			String Id = request.getParameter("id");
+			System.out.println("deleting user");
+
+			userServiceObj.deleteUser(Id);
+
+			userList = userServiceObj.getUsers();
+
+			request.setAttribute("listofUser", userList);
+			RequestDispatcher rd = request.getRequestDispatcher("/userlist.jsp");
+			rd.forward(request, response);
+		}
+
 	}
 
 	@Override
@@ -77,14 +71,14 @@ if ("delete".equalsIgnoreCase(action)) {
 		System.out.println("doPost is Called");
 		HttpSession session = request.getSession();
 
-		String action = (String) session.getAttribute("action");
-		System.out.println("action is" + action);
-		
+		String whatIwanttoDo = (String) session.getAttribute("action");
+		System.out.println("action is" + whatIwanttoDo);
+
 		String userId = request.getParameter("id");
 		System.out.println("user Id is  in do post method is:" + userId);
 
-		if ("login".equalsIgnoreCase(action)) {
-			
+		if ("login".equalsIgnoreCase(whatIwanttoDo)) {
+
 			System.out.println("calling login method");
 
 			String redirectPage = userLogin(request, response);
@@ -94,11 +88,11 @@ if ("delete".equalsIgnoreCase(action)) {
 
 		}
 
-		if ("register".equalsIgnoreCase(action)) {
+		if ("register".equalsIgnoreCase(whatIwanttoDo)) {
 			System.out.println("calling register method");
 
-			List<UserModel> userList =registerUser(request);
-			request.setAttribute("listofUser",userList );
+			List<UserModel> userList = registerUser(request);
+			request.setAttribute("listofUser", userList);
 			RequestDispatcher rd = request.getRequestDispatcher("/userlist.jsp");
 			rd.forward(request, response);
 
@@ -149,7 +143,6 @@ if ("delete".equalsIgnoreCase(action)) {
 		System.out.println("user phone number is :" + userPhoneNo);
 		UserModel usrMdlObj = new UserModel();
 
-		
 		usrMdlObj.setId(userId);
 		usrMdlObj.setFname(userFname);
 		usrMdlObj.setLname(userLname);
@@ -163,18 +156,14 @@ if ("delete".equalsIgnoreCase(action)) {
 		usrMdlObj.setPhoneno(userPhoneNo);
 		usrMdlObj.setQualification(userQlyfcation);
 		usrMdlObj.setFile(userPhoto);
-		
-		
 
 		UserService userServiceObj = new UserService();
 		userServiceObj.userRegisterService(usrMdlObj);
-		
-		userList=userServiceObj.getUsers();
-		
-		
-		
+
+		userList = userServiceObj.getUsers();
+
 		return userList;
-		
+
 	}
 
 	/**
