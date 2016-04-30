@@ -27,6 +27,24 @@ public class UserService {
 		UserDAO dao = new UserDAO();
 		dao.deleteUser(id);
 	}
+
+
+
+	public UserModel getUserData(String id) {
+		UserDAO dao = new UserDAO();
+		
+		
+return dao.getUserData(id);
+		
+		
+	}
+
+
+
+	public void updateUser(UserModel usrMdlObj) {
+	UserDAO dao = new UserDAO();
+	dao.updateUser(usrMdlObj);
+	}
 	
 	
 }

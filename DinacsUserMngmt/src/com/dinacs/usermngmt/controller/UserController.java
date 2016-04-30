@@ -61,6 +61,24 @@ public class UserController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/userlist.jsp");
 			rd.forward(request, response);
 		}
+		
+		
+		if ("getUserData".equalsIgnoreCase(action)) {
+
+			System.out.println("calling doGet method");
+
+			UserService userServiceObj = new UserService();
+			String Id = request.getParameter("id");
+
+			UserModel usrMdlObj = new UserModel();
+UserModel userModelObj	=	userServiceObj.getUserData(Id);
+
+
+			request.setAttribute("userModelObj", userModelObj);
+			RequestDispatcher rd = request.getRequestDispatcher("/update.jsp");
+			rd.forward(request, response);
+		}
+		
 
 	}
 
@@ -97,6 +115,81 @@ public class UserController extends HttpServlet {
 			rd.forward(request, response);
 
 		}
+		
+		if ("update".equalsIgnoreCase(whatIwanttoDo)) {
+			System.out.println("calling update method");
+
+			List<UserModel> userList = updateUser(request);
+			request.setAttribute("listofUser", userList);
+			RequestDispatcher rd = request.getRequestDispatcher("/userlist.jsp");
+			rd.forward(request, response);
+
+		}
+		
+		
+	}
+
+	private List<UserModel> updateUser(HttpServletRequest request) {
+		String userId = request.getParameter("id");
+		System.out.println("user Id is :" + userId);
+
+		String userFname = request.getParameter("Fname");
+		System.out.println("user Firstname is :" + userFname);
+
+		String userLname = request.getParameter("Lname");
+		System.out.println("user Lastname is :" + userLname);
+
+		String userFullName = request.getParameter("Uname");
+		System.out.println("user Fullname is :" + userFullName);
+
+		String userPasswrd = request.getParameter("pass");
+		System.out.println("user Password is :" + userPasswrd);
+
+		String userEmail = request.getParameter("email");
+		System.out.println("user Email is :" + userEmail);
+
+		String userCountry = request.getParameter("country");
+		System.out.println("user Country name is :" + userCountry);
+
+		String userBday = request.getParameter("bday");
+		System.out.println("user Birthday is :" + userBday);
+
+		String userGender = request.getParameter("gender");
+		System.out.println("user gender name is :" + userGender);
+
+		String userQlyfcation = request.getParameter("qualification");
+		System.out.println("user qualification is :" + userQlyfcation);
+
+		String userPhoto = request.getParameter("file");
+		System.out.println("user photo file name is :" + userPhoto);
+
+		String userAddress = request.getParameter("address");
+		System.out.println("user address is :" + userAddress);
+
+		String userPhoneNo = request.getParameter("phoneno");
+		System.out.println("user phone number is :" + userPhoneNo);
+		UserModel usrMdlObj = new UserModel();
+
+		usrMdlObj.setId(userId);
+		usrMdlObj.setFname(userFname);
+		usrMdlObj.setLname(userLname);
+		usrMdlObj.setUname(userFullName);
+		usrMdlObj.setPass(userPasswrd);
+		usrMdlObj.setCountry(userCountry);
+		usrMdlObj.setEmail(userEmail);
+		usrMdlObj.setBday(userBday);
+		usrMdlObj.setAddress(userAddress);
+		usrMdlObj.setGender(userGender);
+		usrMdlObj.setPhoneno(userPhoneNo);
+		usrMdlObj.setQualification(userQlyfcation);
+		usrMdlObj.setFile(userPhoto);
+
+		UserService userServiceObj = new UserService();
+		userServiceObj.updateUser(usrMdlObj);
+
+		userList = userServiceObj.getUsers();
+
+		return userList;
 	}
 
 	/**

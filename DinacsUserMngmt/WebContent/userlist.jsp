@@ -44,7 +44,9 @@ for(UserModel user : usrListvalue){%>
 	<td><%= user.getLname()%></td>
 	<td><%= user.getUname()%></td> 
 	<td><%= user.getEmail()%></td> 
-	<td><a href="usermngmt?action=delete&id=<%= user.getId()%>">delete <br>
+	<td><a href="usermngmt?action=delete&id=<%= user.getId()%>">delete </a><br>
+ </td>
+ 	<td><a href="usermngmt?action=getUserData&id=<%= user.getId()%>">update</a> <br>
  </td>
 	</tr><%} %>	
 </table>
